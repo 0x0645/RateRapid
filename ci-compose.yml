@@ -23,7 +23,7 @@ services:
       - server_static:/app/staticfiles:rw
       - logs:/app/logs:rw
     env_file:
-      - ..env.template
+      - .env.template
     command: /start
 
   postgres:
@@ -33,7 +33,7 @@ services:
     image: raterapid_production_postgres
     container_name: raterapid_local_postgres
     volumes:
-      - db_data:/var/lib/mysql
+      - db_data:/var/lib/postgresql/data
     env_file:
       - .env
 
