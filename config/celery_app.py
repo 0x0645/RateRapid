@@ -5,10 +5,12 @@ This file contains Implementation of Celery App object for the Raterapid project
 Helpful links:
     - https://docs.celeryproject.org/en/stable/django/first-steps-with-django.html
 """
-import os
 import logging
+import os
+
 from celery import Celery
 from celery.signals import setup_logging
+
 from raterapid.rate.celery_config import RateAppCeleryConfig
 
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "config.settings.local")
