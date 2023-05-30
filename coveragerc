@@ -1,0 +1,26 @@
+[run]
+# plugins = django_coverage_plugin
+branch = True
+source = raterapid
+relative_files = True
+omit =
+    */tests/*
+    */migrations/*
+    raterapid/config/asgi.py
+    raterapid/config/wsgi.py
+    manage.py
+    raterapid/reward/*
+    raterapid/referral/*
+
+[report]
+fail_under = 60
+show_missing = True
+skip_covered = False
+
+
+[html]
+title = RateRapid- Code Coverage
+directory = reports/tests/htmlcov
+
+[xml]
+output = reports/tests/coverage.xml

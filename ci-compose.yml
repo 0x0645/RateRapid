@@ -1,0 +1,43 @@
+version: '3'
+
+volumes:
+  logs: {}
+  db_data: {}
+  redis_data: {}
+  server_static: {}
+  flower_data: {}
+
+services:
+  django: &django
+    build:
+      context: .
+      dockerfile: ./compose/local/django/Dockerfile
+    image: raterapid_local_django_x
+    container_name: raterapid_local_django
+    restart: always
+    depends_on:
+      - postgres
+      - redis
+    volumes:
+      - .:/app:z
+      - server_static:/app/staticfiles:rw
+      - logs:/app/logs:rw
+    env_file:
+      - ..env.template
+    command: /start
+
+  postgres:
+    build:
+      context: .
+      dockerfile: ./compose/production/postgres/Dockerfile
+    image: raterapid_production_postgres
+    container_name: raterapid_local_postgres
+    volumes:
+      - db_data:/var/lib/mysql
+    env_file:
+      - .env
+
+  redis:
+    image: redis:6
+    container_name: raterapid_local_redis
+
