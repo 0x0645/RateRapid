@@ -106,7 +106,7 @@ class EXChangeRateClient(BaseCurrencyAPIClient):
         Returns:
             str: The endpoint URL.
         """
-        return f"{self.base_url}/{self.api_key}/latest"
+        return f"{self.base_url}/{self.api_key}/latest/USD"
 
     def pair_conversion_endpoint(self, base: str, target: str, amount: float) -> str:
         """
@@ -256,7 +256,6 @@ def compute_cross_rate(rate1: float, rate2: float) -> float:
 def get_cached_api_rates():
     """Retrieves the API rates data from the cache."""
     cached_data = cache.get("api_rates")
-
     if cached_data is not None:
         updated_at = parse_datetime(cached_data.get("updated_at"))
 
@@ -298,7 +297,6 @@ def pair_conversion(base: str, target: str, amount: float) -> Tuple[bool, Option
         conversion, the conversion result, and the datetime of the rate used for conversion.
     """
     success, result = exchangerate_client.pair_conversion(base, target, amount)
-    print(success, result)
     if success:
         logger.info(f"Converted {amount} {base} to {target} using ExchangeRate API.")
         return success, result, timezone.now()
@@ -311,7 +309,7 @@ def pair_conversion(base: str, target: str, amount: float) -> Tuple[bool, Option
     data, last_updated = get_cached_api_rates()
     if data and last_updated:
         cross_rate = compute_cross_rate(data[base], data[target])
-        result = cross_rate * amount
+        result = cross_rate * float(amount)
         logger.info(f"Converted {amount} {base} to {target} using cached rates.")
         return True, result, last_updated
 

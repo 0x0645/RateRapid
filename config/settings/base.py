@@ -297,7 +297,7 @@ CORS_URLS_REGEX = r"^/api/.*$"
 # Custom settings
 # ------------------------------------------------------------------------------
 
-EXCHANGERATE_API_KEY = env.str("CURRENCYLAYER_API_KEY")
+CURRENCYLAYER_API_KEY = env.str("CURRENCYLAYER_API_KEY")
 EXCHANGERATE_API_KEY = env.str("EXCHANGERATE_API_KEY")
 CACHE_API_RATE: dict = env.dict(
     "CACHE_API_RATE",
