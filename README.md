@@ -17,7 +17,7 @@ Follow these steps to get your development environment set up:
 ```bash
 make deploy
 ```
-
+See this [postman collecttion](https://www.postman.com/aerospace-physicist-57790805/workspace/puplic/collection/23296523-59bd1aba-dddb-4462-b4f0-3167dc127f6f?action=share&creator=23296523) for more info about the APIs.
 ### Usage Instructions
 You can interact with Docker Compose using the make commands. Here are a few examples:
 
