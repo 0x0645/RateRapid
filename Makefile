@@ -25,7 +25,6 @@ test-report:
 	coverage xml || true
 
 deploy:
-	mkdir -p docker/logs docker/db_data docker/redis_data docker/server_static docker/flower_data docker/logs/nginx
 	docker compose up --build -d
 
 up:
