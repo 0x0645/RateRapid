@@ -14,7 +14,7 @@ tblib==1.7.0 # Needed to see the traceback for the parallel test runner.
 # Code quality
 # ------------------------------------------------------------------------------
 autoflake==1.4
-flake8==4.0.*
+flake8==6.0.*
 flake8-awesome==1.3.*
 flake8-docstrings==1.6.*
 flake8-django==1.3
